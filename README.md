@@ -1,12 +1,13 @@
 ![](https://github.com/dav009/contra/blob/master/logo.gif?raw=true)
 
-Contra es un conjunto de scripts para:  (i) descargar y (ii) extraer informacion de `contratos.gov.co` (Sitio web del gobierno colombiano con informacion contractual)
- 
-Tener la informacion contractual en un formato procesable es un requirimiento indispensable para usar los datos en la solucion de problemas (i.e: Deteccion de Corrupcion).
+Contra es un conjunto de scripts para:  (i) descargar y (ii) extraer informacion de `contratos.gov.co` (Sitio web del
+gobierno colombiano con informacion contractual)
 
+Tener la informacion contractual en un formato procesable es un requirimiento indispensable para usar los datos en la
+solucion de problemas (i.e: Deteccion de Corrupcion).
 
 Este script permite:
- 
+
 1. Descargar los contratos de contratos.gov.co (approx 1 millon para Julio 2015)
 2. Extraer del html la informacion sobre los contratos y generar un dataset en formato json
 
@@ -14,12 +15,16 @@ Este script permite:
 
 ## Dump Enero 21 2016
 
-El dataset de Contratos hasta enero 2016 pesa aproximadamente 7G, contiene cerca de 2 millon de entradas esta disponible para descargar aqui:
+El dataset de Contratos hasta enero 2016 pesa aproximadamente 7G, contiene cerca de 2 millon de entradas esta disponible
+para descargar aqui:
 
-- (1.2GB) [Enero_21_2016 Dataset](http://s3.amazonaws.com/rm-open-data/contra/contract-data-january-21-2016-cleaned.tar.gz) gracias a [jpmarindiaz](https://github.com/jpmarindiaz) por hostearlo
-- El mismo dump de Enero_21_2016 filtrado por `Tipo de Contrato = licitaciones` y en csv (~90MB) [contratos licitaciones](http://rm-open-data.s3.amazonaws.com/contra/contratos-licitaciones.csv)
+- (
+  1.2GB) [Enero_21_2016 Dataset](http://s3.amazonaws.com/rm-open-data/contra/contract-data-january-21-2016-cleaned.tar.gz)
+  gracias a [jpmarindiaz](https://github.com/jpmarindiaz) por hostearlo
+- El mismo dump de Enero_21_2016 filtrado por `Tipo de Contrato = licitaciones` y en csv (~
+  90MB) [contratos licitaciones](http://rm-open-data.s3.amazonaws.com/contra/contratos-licitaciones.csv)
 
-## Dump Julio 18 2015 
+## Dump Julio 18 2015
 
 El dataset de Contratos hasta Julio 2015 pesa aproximadamente 5G, contiene cerca de 1 millon de entradas.
 
@@ -75,12 +80,11 @@ Cada linea del archivo contiene un objecto json. Cada objeto json tiene la sigui
 }
 ```
 
-
 # Instalando requerimientos
 
 1. `sudo apt-get install libxml2-dev libxslt-dev python-dev zlib1g-dev`
 2. `pip install -r requirements.txt`
- 
+
 # Running it
 
 ### Descargando las paginas de busqueda
@@ -90,7 +94,6 @@ Descarga la paginas de busqueda en el directorio especificado en output:
 `python contra  scrape_searchpages --output <pathToOutputFolder>`
 
 --------------
-
 
 ### Extrayendo URLs de contratos de las paginas de busqueda
 
@@ -102,15 +105,14 @@ Extrae las urls de contratos dentro de las paginas de busqueda. Genera una archi
 
 ### Descargando las paginas de contratos
 
-Dada un archivo que contiene en cada linea una url a un contrato. Descarga cada contrato, extrae el contenido, y genera un archivo json en el folder especificado en output.
+Dada un archivo que contiene en cada linea una url a un contrato. Descarga cada contrato, extrae el contenido, y genera
+un archivo json en el folder especificado en output.
 
 `python contra  scrape_contracts --input <fileWithContractLinks> --output <folderWithContractJsonPages>`
 
 --------------
 
 Los archivos generados pueden ser concatenados via `cat http* >> dataset.json` para generar el dataset final
-
-
 
 ### Schema dataset
 
