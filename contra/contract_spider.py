@@ -1,29 +1,34 @@
-import requests
-from multiprocessing import Pool, Value
 import codecs
-from contra.contract import ContractParser
 import json
-import os
+import time
+from multiprocessing import Value
+from pathlib import Path
+from typing import Tuple
+
+import requests
+
+from contra.GeneralMessage import GeneralMessage
+from contra.contract import ContractParser
 
 counter = Value('i', 1)
 
 
-def worker(pair):
+def ExtractContractInformation(pair: Tuple[str, str]):
+    time.sleep(3)
     url = pair[0]
     global counter
-    output_folder = pair[1]
+    output_folder = Path(pair[1])
     try:
         result = requests.get(url)
         if result.status_code == 200:
             temporalFolder = counter.value % 400
-            folder = output_folder + "/" + str(temporalFolder) + "/"
-            f = codecs.open(folder + (url.replace("/", "_")), 'w', 'utf-8')
-            contract = ContractParser(result.text).parse()
-            f.write(json.dumps(contract) + "\n")
-            f.close()
+            folder: Path = output_folder / Path(str(temporalFolder), url.split("=")[1].replace("/", "_") + ".json")
+            with folder.open(mode='w+', encoding='utf-8') as f:
+                contract = ContractParser(result.text).parse()
+                f.write(json.dumps(contract) + "\n")
         # print("downloaded.." + url)
         else:
-            print("error downloading.." + url)
+            GeneralMessage.publishError("error downloading.." + url)
     except Exception as e:
         print(e.message)
         print("error downloading.." + url)
@@ -34,18 +39,18 @@ def worker(pair):
 # Downloads a list of links to contract pages
 # main <pathToFileWithContractLinkPerLine> <FolderWhereContractLinksWillBeDownloaded>
 def main(args):
-    file_with_urls = args[0]
-    output_folder = args[1]
+    file_with_urls: str = args[0]
+    output_folder: str = args[1]
 
     for i in range(0, 400):
-        folder = output_folder + "/" + str(i) + "/"
-        if not os.path.exists(folder):
-            os.makedirs(folder)
+        folder: Path = Path(output_folder, "/", str(i), "/")
+        if not folder.exists():
+            folder.mkdir()
 
     f = codecs.open(file_with_urls, 'r', 'utf-8')
     urls = (("https://www.contratos.gov.co" + line.strip(), output_folder) for line in f)
 
-    pool = Pool(600)
-    pool.map(worker, urls)
+    for url in urls:
+        ExtractContractInformation(url)
 
 # main(["data/all_links", "data/contracts/"])
