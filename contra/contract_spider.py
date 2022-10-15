@@ -14,7 +14,7 @@ counter = Value('i', 1)
 
 
 def ExtractContractInformation(pair: Tuple[str, str]):
-    time.sleep(3)
+    time.sleep(5)
     url = pair[0]
     global counter
     output_folder = Path(pair[1])
@@ -23,14 +23,16 @@ def ExtractContractInformation(pair: Tuple[str, str]):
         if result.status_code == 200:
             temporalFolder = counter.value % 400
             folder: Path = output_folder / Path(str(temporalFolder), url.split("=")[1].replace("/", "_") + ".json")
-            with folder.open(mode='w+', encoding='utf-8') as f:
+            GeneralMessage.publish("The name of file to write is: " + folder.as_posix())
+            with folder.open(mode='a+', encoding='utf-8') as f:
                 contract = ContractParser(result.text).parse()
                 f.write(json.dumps(contract) + "\n")
+                f.close()
         # print("downloaded.." + url)
         else:
             GeneralMessage.publishError("error downloading.." + url)
     except Exception as e:
-        print(e.message)
+        print(e)
         print("error downloading.." + url)
     counter.value += 1
     print("done.." + str(counter.value))
@@ -43,7 +45,7 @@ def main(args):
     output_folder: str = args[1]
 
     for i in range(0, 400):
-        folder: Path = Path(output_folder, "/", str(i), "/")
+        folder: Path = Path(output_folder, str(i))
         if not folder.exists():
             folder.mkdir()
 
