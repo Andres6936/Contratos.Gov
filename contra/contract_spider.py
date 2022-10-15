@@ -1,7 +1,7 @@
 import requests
 from multiprocessing import Pool, Value
 import codecs
-from contract import ContractParser
+from contra.contract import ContractParser
 import json
 import os
 

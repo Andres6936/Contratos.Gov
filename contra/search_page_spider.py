@@ -1,5 +1,3 @@
-import multiprocessing
-
 from contra.UrlExtractor import UrlExtractor
 
 
@@ -49,8 +47,8 @@ def main(args):
     output_folder: str = args[0]
     extractors: list[UrlExtractor] = Contratos(output_folder).generate_base_urls()
 
-    pool = multiprocessing.Pool(30)
-    pool.map(worker, extractors)
+    for extractor in extractors:
+        extractor.extract_all()
 
 # uso [PathToOutputFolder]
 # main(["/Users/dav009/source/contra/pages"])
