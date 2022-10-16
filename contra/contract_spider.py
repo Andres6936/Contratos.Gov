@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Tuple
 
 import requests
+from requests import Response
 
 from contra.GeneralMessage import GeneralMessage
 from contra.contract import ContractParser
@@ -19,7 +20,7 @@ def ExtractContractInformation(pair: Tuple[str, str]):
     global counter
     output_folder = Path(pair[1])
     try:
-        result = requests.get(url)
+        result: Response = requests.get(url)
         if result.status_code == 200:
             temporalFolder = counter.value % 400
             folder: Path = output_folder / Path(str(temporalFolder), url.split("=")[1].replace("/", "_") + ".json")
