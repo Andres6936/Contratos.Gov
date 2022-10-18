@@ -3,9 +3,11 @@ import json
 import multiprocessing
 from multiprocessing import Value
 from os import listdir
+from typing import Tuple
 
-from lxml import html
+from lxml import html, etree
 from lxml.cssselect import CSSSelector
+from lxml.etree import SubElement
 
 counter = Value('i', 0)
 
@@ -29,22 +31,13 @@ def extract_field(list_of_tds):
 
 def extract_doc(list_of_tds):
 
-    def extract_url(td_tag):
-        matches = CSSSelector("input[type=\"hidden\"]")(td_tag)
-        url = ""
-        for match in matches:
-            url = match.get("value").strip()
-        return url
+    def GetNameContract(td_tag) -> Tuple[str, str]:
+        matches = td_tag.find('a')
+        if matches is not None:
+            return matches.text, matches.get('href')
+        return "", ""
 
-    def extract_name(td_tag):
-        matches = CSSSelector("input[type=\"submit\"]")(td_tag)
-        name = ""
-        for match in matches:
-            name = match.get("value").strip()
-        return name
-
-    name = extract_name(list_of_tds[0])
-    url = extract_url(list_of_tds[0])
+    (name, url) = GetNameContract(list_of_tds[0])
     description = list_of_tds[1].text_content().strip()
     publication_date = list_of_tds[5].text_content().strip()
 
