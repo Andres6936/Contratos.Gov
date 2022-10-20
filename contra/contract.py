@@ -5,9 +5,8 @@ from multiprocessing import Value
 from os import listdir
 from typing import Tuple
 
-from lxml import html, etree
+from lxml import html
 from lxml.cssselect import CSSSelector
-from lxml.etree import SubElement
 
 counter = Value('i', 0)
 
