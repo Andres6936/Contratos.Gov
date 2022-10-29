@@ -1,19 +1,45 @@
 import codecs
 import json
 import multiprocessing
+import string
 from multiprocessing import Value
 from os import listdir
 from typing import Tuple
 
 from lxml import html
 from lxml.cssselect import CSSSelector
+from unidecode import unidecode
 
 counter = Value('i', 0)
 
 
+def GetFieldName(value: str) -> str:
+    """
+    It often happens that you have text data in Unicode, but you need
+    to represent it in ASCII. For example when integrating with
+    legacy code that does not support Unicode, or for ease of entry
+    of non-Roman names on a US keyboard, or when constructing ASCII
+    machine identifiers from human-readable Unicode strings that
+    should still be somewhat intelligible. A popular example of this
+    is when making a URL slug from an article title.
+
+    :param value: The value of field name, generally this not is formatted
+    :return: The name of a field for will be used for JSON field
+    """
+    formatted = unidecode(value.strip()) \
+        .replace(" del ", " ") \
+        .replace(" de ", " ") \
+        .replace(" al ", " ") \
+        .replace(" y ", " ") \
+        .replace(" a ", " ")
+
+    # Capitalize each word before of remove the whitespaces
+    return string.capwords(formatted).replace(" ", "")
+
+
 # Extracts fields from contract pages:
 # i.e: https://www.contratos.gov.co/consultas/detalleProceso.do?numConstancia=15-11-4035910
-def extract_field(list_of_tds):
+def extract_field(list_of_tds) -> Tuple[str, str]:
     field_name = ""
     field_value = ""
     for td_tag in list_of_tds:
@@ -25,11 +51,10 @@ def extract_field(list_of_tds):
         if td_tag.get("class") == "tablaslistEven":
             field_name = td_tag.text_content().strip()
 
-    return field_name, field_value
+    return GetFieldName(field_name), field_value
 
 
 def extract_doc(list_of_tds):
-
     def GetNameContract(td_tag) -> Tuple[str, str]:
         matches = td_tag.find('a')
         if matches is not None:
@@ -40,9 +65,14 @@ def extract_doc(list_of_tds):
     description = list_of_tds[1].text_content().strip()
     publication_date = list_of_tds[5].text_content().strip()
 
-    # Making sure we dont extract the header of the table
+    # Making sure we don't extract the header of the table
     if name != "" and name != "Nombre":
-        return {"name": name, "url": url, "description": description, "publication_date": publication_date}
+        return {
+            "Name": name,
+            "Url": url,
+            "Description": description,
+            "PublicationDate": publication_date
+        }
     return None
 
 
@@ -61,13 +91,13 @@ class ContractParser:
             td_tags = CSSSelector("td")(tr_tag)
 
             # it is a field : field value
-            if (len(td_tags) == 2):
+            if len(td_tags) == 2:
                 field_name, field_value = extract_field(td_tags)
                 if field_name and field_value:
                     contract_representation[field_name] = field_value
 
             # it is one of the linked docs
-            if (len(td_tags) == 6):
+            if len(td_tags) == 6:
                 document = extract_doc(td_tags)
                 if document:
                     contract_representation['documents'].append(document)
