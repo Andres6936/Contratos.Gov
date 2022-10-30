@@ -43,9 +43,8 @@ def worker(extractor: UrlExtractor):
 
 
 # Download all the results pages containing links to contract pages	
-def main(output: str):
-    output_folder: str = output[0]
-    extractors: list[UrlExtractor] = Contratos(output_folder).generate_base_urls()
+def main(outputFolder: str):
+    extractors: list[UrlExtractor] = Contratos(outputFolder).generate_base_urls()
 
     for extractor in extractors:
         extractor.extract_all()
