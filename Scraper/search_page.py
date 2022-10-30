@@ -4,7 +4,8 @@ import itertools
 import multiprocessing
 import re
 from os import listdir
-from contra.GeneralMessage import GeneralMessage
+
+from Scraper.GeneralMessage import GeneralMessage
 
 
 def extract_links_from_index_page(content):
@@ -46,4 +47,4 @@ def main(args):
 
 # Extracts all the contract urls from a folder filled with contract pages
 # <PathToDownloadedSearchPages> <OutputFile>
-# main(["/Users/dav009/source/contra/pages/", "/Users/dav009/source/contra/all_links"])
+# main(["/Users/dav009/source/Scraper/pages/", "/Users/dav009/source/Scraper/all_links"])

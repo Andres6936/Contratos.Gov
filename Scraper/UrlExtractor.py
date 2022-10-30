@@ -4,7 +4,7 @@ from pathlib import Path
 import requests
 from requests import Response
 
-from contra.GeneralMessage import GeneralMessage
+from Scraper.GeneralMessage import GeneralMessage
 
 
 class UrlExtractor:

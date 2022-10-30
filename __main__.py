@@ -1,6 +1,6 @@
 import argparse
 
-from contra import contract_spider, search_page, search_page_spider
+from Scraper import contract_spider, search_page, search_page_spider
 
 
 def main():
@@ -29,9 +29,9 @@ def main():
         contract_spider.main([input_arg, output_arg])
 
 
-# contra  scrape_searchpages --output folder
-# contra  extract_contracts --input scrapedSearchPages --output fileWithLinks
-# contra  scrape_contracts --input fileWithContractLinks --output folderWithContractPages
+# Scraper  scrape_searchpages --output folder
+# Scraper  extract_contracts --input scrapedSearchPages --output fileWithLinks
+# Scraper  scrape_contracts --input fileWithContractLinks --output folderWithContractPages
 #
 if __name__ == "__main__":
     main()

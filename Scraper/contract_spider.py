@@ -8,8 +8,8 @@ from typing import Tuple
 import requests
 from requests import Response
 
-from contra.GeneralMessage import GeneralMessage
-from contra.contract import ContractParser
+from Scraper.GeneralMessage import GeneralMessage
+from Scraper.contract import ContractParser
 
 counter = Value('i', 1)
 

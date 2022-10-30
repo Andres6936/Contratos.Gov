@@ -1,4 +1,4 @@
-from contra.UrlExtractor import UrlExtractor
+from Scraper.UrlExtractor import UrlExtractor
 
 
 class Contratos:
@@ -51,4 +51,4 @@ def main(args):
         extractor.extract_all()
 
 # uso [PathToOutputFolder]
-# main(["/Users/dav009/source/contra/pages"])
+# main(["/Users/dav009/source/Scraper/pages"])
