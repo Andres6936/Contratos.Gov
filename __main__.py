@@ -1,5 +1,6 @@
 import argparse
-from contra import search_page_spider, search_page, contract_spider, contract
+
+from contra import contract_spider, search_page, search_page_spider
 
 
 def main():
@@ -26,14 +27,6 @@ def main():
         print("Reading link list from: %s" % (input_arg))
         print("Download contract html-content: %s" % (output_arg))
         contract_spider.main([input_arg, output_arg])
-
-    elif action == "create-dataset":
-        print("Parsing pages in: %s" % (input_arg))
-        print("Saving json dataset in: %s" % (output_arg))
-        contract.create_data_set_from_files(input_arg, output_arg)
-    elif action == "create-single-lined-files":
-        print("Parsing pages in: %s" % (input_arg))
-        contract.remove_new_lines(input_arg)
 
 
 # contra  scrape_searchpages --output folder
