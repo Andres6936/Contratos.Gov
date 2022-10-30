@@ -1,11 +1,11 @@
-import sys
+import logging
 
 
 class GeneralMessage:
     @staticmethod
     def publish(message: str):
-        sys.stdout.write(message)
+        logging.info(message)
 
     @staticmethod
     def publishError(message: str):
-        sys.stderr.write(message)
+        logging.error(message)

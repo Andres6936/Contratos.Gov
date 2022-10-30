@@ -1,4 +1,3 @@
-import time
 from pathlib import Path
 
 import requests
@@ -7,8 +6,7 @@ from requests import Response
 from Scraper.GeneralMessage import GeneralMessage
 
 
-class UrlExtractor:
-
+class ContractExtractor:
     def __init__(self, base_url: str, pagina: int, objeto: str, cuantia: str, output_folder: str):
         self.url = base_url
         self.current_pagina = pagina
@@ -30,19 +28,23 @@ class UrlExtractor:
             print("error while grabbing.." + self.get_url())
             return ""
 
-    def GetNameFile(self):
-        return "{objeto}_{cuantia}_{pagina}.html".format(
-            objeto=self.objeto, cuantia=self.cuantia, pagina=self.current_pagina)
+    def GetNameFile(self) -> str:
+        return f"{self.objeto}_{self.cuantia}_{self.current_pagina}.html"
+
+    @staticmethod
+    def CreateFileIfNotExist(directory: Path) -> None:
+        if not directory.exists():
+            directory.mkdir(parents=True, exist_ok=True)
 
     def extract_all(self):
         while True:
             GeneralMessage.publish("Start new cycle")
-            time.sleep(3)
             html_content = self.extract()
             if html_content == "":
                 break
             filename = Path(self.output_folder, self.GetNameFile())
             GeneralMessage.publish("The name of file to write is: " + filename.as_posix())
+            self.CreateFileIfNotExist(filename.parent)
             with filename.open(mode='a+', encoding='utf-8') as f:
                 f.write(html_content)
                 f.close()

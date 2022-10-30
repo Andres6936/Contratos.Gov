@@ -9,8 +9,8 @@ from Scraper import contract_spider, search_page, search_page_spider
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract Transform Load for contracts from government of Colombia")
     parser.add_argument("action", choices=["scrape_searchpages", "extract_contracts", "scrape_contracts"],
-                        required=True, help="Generally the order of the arguments should be scrape_searchpages, "
-                                            "extract_contracts and last scrape_contracts")
+                        help="Generally the order of the arguments should be scrape_searchpages, "
+                             "extract_contracts and last scrape_contracts")
     parser.add_argument("-i", "--input", default="Output", type=str)
     parser.add_argument("-o", "--output", default="Output", type=str)
     args = parser.parse_args()

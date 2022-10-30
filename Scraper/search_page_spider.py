@@ -1,13 +1,16 @@
-from Scraper.UrlExtractor import UrlExtractor
+import time
+from typing import Final
+
+from Scraper.ContractExtractor import ContractExtractor
 
 
-class Contratos:
-
+class Extractor(list):
     def __init__(self, output_folder: str):
-        self.url: str = "https://www.contratos.gov.co/consultas/resultadosConsulta.do?&ctl00$ContentPlaceHolder1$hidIDProducto=-1&ctl00$ContentPlaceHolder1$hidRedir=&departamento=&ctl00$ContentPlaceHolder1$hidNombreDemandante=-1&objeto={objeto}&paginaObjetivo={pagina}&cuantia={cuantia}&ctl00$ContentPlaceHolder1$hidNombreProducto=-1&fechaInicial=&ctl00$ContentPlaceHolder1$hidIdEmpresaC=0&ctl00$ContentPlaceHolder1$hidIdOrgV=-1&ctl00$ContentPlaceHolder1$hidIDProductoNoIngresado=-1&ctl00$ContentPlaceHolder1$hidRangoMaximoFecha=&fechaFinal=&desdeFomulario=true&ctl00$ContentPlaceHolder1$hidIdOrgC=-1&ctl00$ContentPlaceHolder1$hidIDRubro=-1&tipoProceso=&registrosXPagina=10&numeroProceso=&municipio=0&estado=0&ctl00$ContentPlaceHolder1$hidNombreProveedor=-1&ctl00$ContentPlaceHolder1$hidIdEmpresaVenta=-1"
+        super().__init__()
+        self.url: Final[
+            str] = "https://www.contratos.gov.co/consultas/resultadosConsulta.do?&ctl00$ContentPlaceHolder1$hidIDProducto=-1&ctl00$ContentPlaceHolder1$hidRedir=&departamento=&ctl00$ContentPlaceHolder1$hidNombreDemandante=-1&objeto={objeto}&paginaObjetivo={pagina}&cuantia={cuantia}&ctl00$ContentPlaceHolder1$hidNombreProducto=-1&fechaInicial=&ctl00$ContentPlaceHolder1$hidIdEmpresaC=0&ctl00$ContentPlaceHolder1$hidIdOrgV=-1&ctl00$ContentPlaceHolder1$hidIDProductoNoIngresado=-1&ctl00$ContentPlaceHolder1$hidRangoMaximoFecha=&fechaFinal=&desdeFomulario=true&ctl00$ContentPlaceHolder1$hidIdOrgC=-1&ctl00$ContentPlaceHolder1$hidIDRubro=-1&tipoProceso=&registrosXPagina=10&numeroProceso=&municipio=0&estado=0&ctl00$ContentPlaceHolder1$hidNombreProveedor=-1&ctl00$ContentPlaceHolder1$hidIdEmpresaVenta=-1"
         self.output_folder: str = output_folder
 
-    def generate_base_urls(self) -> list[UrlExtractor]:
         cuantias: list[str] = ["1", "2", "3", "4", "5"]
         objetos: list[str] = ["10000000", "11000000", "12000000", "15000000", "13000000", "14000000", "27000000",
                               "20000000",
@@ -29,25 +32,16 @@ class Contratos:
                               "78000000",
                               "90000000", "95000000"]
 
-        extractors: list[UrlExtractor] = list()
-
         for cuantia in cuantias:
             for objeto in objetos:
-                extractors.append(UrlExtractor(self.url, 1, objeto, cuantia, self.output_folder))
-
-        return extractors
-
-
-def worker(extractor: UrlExtractor):
-    extractor.extract_all()
+                self.append(ContractExtractor(self.url, 1, objeto, cuantia, self.output_folder))
 
 
 # Download all the results pages containing links to contract pages	
 def main(outputFolder: str):
-    extractors: list[UrlExtractor] = Contratos(outputFolder).generate_base_urls()
-
-    for extractor in extractors:
-        extractor.extract_all()
+    for contract in Extractor(outputFolder):
+        time.sleep(3)
+        contract.extract_all()
 
 # uso [PathToOutputFolder]
 # main(["/Users/dav009/source/Scraper/pages"])
