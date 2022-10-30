@@ -35,9 +35,9 @@ def extract_all_links(path_to_page_folder: str):
     return results
 
 
-def main(args):
-    path_to_folder_with_pages: str = args[0]
-    path_to_output_file: str = args[1]
+def main(inputFolder: str, outputFolder: str):
+    path_to_folder_with_pages: str = inputFolder
+    path_to_output_file: str = outputFolder
     all_links = extract_all_links(path_to_folder_with_pages)
 
     output = codecs.open(path_to_output_file, 'w', 'utf-8')

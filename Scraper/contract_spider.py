@@ -41,9 +41,9 @@ def ExtractContractInformation(pair: Tuple[str, str]):
 
 # Downloads a list of links to contract pages
 # main <pathToFileWithContractLinkPerLine> <FolderWhereContractLinksWillBeDownloaded>
-def main(args):
-    file_with_urls: str = args[0]
-    output_folder: str = args[1]
+def main(inputFolder: str, outputFolder: str):
+    file_with_urls: str = inputFolder
+    output_folder: str = outputFolder
 
     for i in range(0, 400):
         folder: Path = Path(output_folder, str(i))
