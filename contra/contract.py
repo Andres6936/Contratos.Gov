@@ -25,6 +25,7 @@ def GetFieldName(value: str) -> str:
 
     :param value: The value of field name, generally this not is formatted
     :return: The name of a field for will be used for JSON field
+        (Without spaces)
     """
     formatted = unidecode(value.strip()) \
         .replace(" del ", " ") \
