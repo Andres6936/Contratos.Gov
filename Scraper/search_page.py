@@ -15,7 +15,7 @@ def extract_links_from_index_page(content):
 
 
 def extract_links_from_file(path_to_file: str):
-    print("reading.." + path_to_file)
+    GeneralMessage.publish("reading.." + path_to_file)
     try:
         with open(path_to_file, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -30,7 +30,7 @@ def extract_all_links(path_to_page_folder: str):
     all_files_in_folder = [path_to_page_folder + f for f in listdir(path_to_page_folder)]
     pool = multiprocessing.Pool(50)
     results = pool.map(extract_links_from_file, all_files_in_folder)
-    print("concatenating results....")
+    GeneralMessage.publish("concatenating results....")
     results = set(list(itertools.chain(*results)))
     return results
 
