@@ -33,10 +33,10 @@ def ExtractContractInformation(pair: Tuple[str, str]):
         else:
             GeneralMessage.publishError("error downloading.." + url)
     except Exception as e:
-        print(e)
-        print("error downloading.." + url)
+        GeneralMessage.publishError(e)
+        GeneralMessage.publishError("error downloading.." + url)
     counter.value += 1
-    print("done.." + str(counter.value))
+    GeneralMessage.publish("done.." + str(counter.value))
 
 
 # Downloads a list of links to contract pages

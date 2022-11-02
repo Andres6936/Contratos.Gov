@@ -1,4 +1,5 @@
 import logging
+from typing import Union
 
 
 class GeneralMessage:
@@ -7,9 +8,9 @@ class GeneralMessage:
         format='%(asctime)s - %(levelname)s - %(message)s')
 
     @staticmethod
-    def publish(message: str):
+    def publish(message: Union[str, object]):
         logging.info(message)
 
     @staticmethod
-    def publishError(message: str):
+    def publishError(message: Union[str, object]):
         logging.error(message)
