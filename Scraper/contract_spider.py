@@ -8,6 +8,7 @@ from typing import Tuple
 import requests
 from requests import Response
 
+from Scraper.Directory import Directory
 from Scraper.GeneralMessage import GeneralMessage
 from Scraper.contract import ContractParser
 
@@ -22,8 +23,8 @@ def ExtractContractInformation(pair: Tuple[str, str]):
     try:
         result: Response = requests.get(url)
         if result.status_code == 200:
-            temporalFolder = counter.value % 400
-            folder: Path = output_folder / Path(str(temporalFolder), url.split("=")[1].replace("/", "_") + ".json")
+            folder: Path = output_folder / Path(url.split("=")[1].replace("/", "_") + ".json")
+            Directory.CreateFileIfNotExist(folder.parent)
             GeneralMessage.publish("The name of file to write is: " + folder.as_posix())
             with folder.open(mode='a+', encoding='utf-8') as f:
                 contract = ContractParser(result.text).parse()
@@ -44,11 +45,6 @@ def ExtractContractInformation(pair: Tuple[str, str]):
 def main(inputFolder: str, outputFolder: str):
     file_with_urls: str = inputFolder
     output_folder: str = outputFolder
-
-    for i in range(0, 400):
-        folder: Path = Path(output_folder, str(i))
-        if not folder.exists():
-            folder.mkdir()
 
     f = codecs.open(file_with_urls, 'r', 'utf-8')
     urls = (("https://www.contratos.gov.co" + line.strip(), output_folder) for line in f)

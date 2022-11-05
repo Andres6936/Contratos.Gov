@@ -3,6 +3,7 @@ from pathlib import Path
 import requests
 from requests import Response
 
+from Scraper.Directory import Directory
 from Scraper.GeneralMessage import GeneralMessage
 
 
@@ -31,11 +32,6 @@ class ContractExtractor:
     def GetNameFile(self) -> str:
         return f"{self.objeto}_{self.cuantia}_{self.current_pagina}.html"
 
-    @staticmethod
-    def CreateFileIfNotExist(directory: Path) -> None:
-        if not directory.exists():
-            directory.mkdir(parents=True, exist_ok=True)
-
     def extract_all(self):
         while True:
             GeneralMessage.publish("Start new cycle")
@@ -44,7 +40,7 @@ class ContractExtractor:
                 break
             filename = Path(self.output_folder, self.GetNameFile())
             GeneralMessage.publish("The name of file to write is: " + filename.as_posix())
-            self.CreateFileIfNotExist(filename.parent)
+            Directory.CreateFileIfNotExist(filename.parent)
             with filename.open(mode='a+', encoding='utf-8') as f:
                 f.write(html_content)
                 f.close()
