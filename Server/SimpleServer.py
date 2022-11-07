@@ -1,4 +1,5 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import http.server
+from http.server import BaseHTTPRequestHandler
 
 from Scraper.GeneralMessage import GeneralMessage
 
@@ -19,12 +20,7 @@ class SimpleServer(BaseHTTPRequestHandler):
 
 
 def main():
-    webserver = HTTPServer((hostName, serverPort), SimpleServer)
-    GeneralMessage.publish(f"Running Web Server in https://{hostName}:{serverPort}")
-    try:
-        webserver.serve_forever()
-    except KeyboardInterrupt:
-        pass
-
-    webserver.server_close()
+    with http.server.HTTPServer((hostName, serverPort), SimpleServer) as httpd:
+        GeneralMessage.publish(f"Running Web Server in https://{hostName}:{serverPort}")
+        httpd.serve_forever()
     GeneralMessage.publish("Server Stopped")
