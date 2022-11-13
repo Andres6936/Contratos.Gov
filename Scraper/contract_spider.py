@@ -1,43 +1,7 @@
 import codecs
-import json
 import time
-from multiprocessing import Value
-from pathlib import Path
-from typing import Tuple
 
-import requests
-from requests import Response
-
-from Scraper.Directory import Directory
-from Scraper.GeneralMessage import GeneralMessage
-from Scraper.contract import ContractParser
-
-counter = Value('i', 1)
-
-
-def ExtractContractInformation(pair: Tuple[str, str]):
-    time.sleep(5)
-    url = pair[0]
-    global counter
-    output_folder = Path(pair[1])
-    try:
-        result: Response = requests.get(url)
-        if result.status_code == 200:
-            folder: Path = output_folder / Path(url.split("=")[1].replace("/", "_") + ".json")
-            Directory.CreateFileIfNotExist(folder.parent)
-            GeneralMessage.publish("The name of file to write is: " + folder.as_posix())
-            with folder.open(mode='a+', encoding='utf-8') as f:
-                contract = ContractParser(result.text).parse()
-                f.write(json.dumps(contract) + "\n")
-                f.close()
-        # print("downloaded.." + url)
-        else:
-            GeneralMessage.publishError("error downloading.." + url)
-    except Exception as e:
-        GeneralMessage.publishError(e)
-        GeneralMessage.publishError("error downloading.." + url)
-    counter.value += 1
-    GeneralMessage.publish("done.." + str(counter.value))
+from Scraper.Writer.JSONWriter import JSONWriter
 
 
 # Downloads a list of links to contract pages
@@ -50,6 +14,8 @@ def main(inputFolder: str, outputFolder: str):
     urls = (("https://www.contratos.gov.co" + line.strip(), output_folder) for line in f)
 
     for url in urls:
-        ExtractContractInformation(url)
+        time.sleep(5)
+        writer = JSONWriter(url)
+        writer.write()
 
 # main(["data/all_links", "data/contracts/"])
