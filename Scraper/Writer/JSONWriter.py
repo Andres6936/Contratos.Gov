@@ -7,10 +7,11 @@ from requests import Response
 
 from Scraper.Directory import Directory
 from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Writer.IWriter import IWriter
 from Scraper.contract import ContractParser
 
 
-class JSONWriter:
+class JSONWriter(IWriter):
     def __init__(self, contract: Tuple[str, str]):
         (url, output_folder) = contract
         self.url: str = url
