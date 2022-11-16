@@ -2,6 +2,7 @@ import argparse
 from enum import Enum, unique
 
 from Scraper import contract_spider, search_page, search_page_spider
+from Scraper.Config.Configuration import Configuration
 from Scraper.Logger.GeneralMessage import GeneralMessage
 from Server import SimpleServer
 
@@ -27,6 +28,10 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--input", default="Output", type=str)
     parser.add_argument("-o", "--output", default="Output", type=str)
     args = parser.parse_args()
+
+    configuration = Configuration()
+    configuration.SetInputFolder(args.input)
+    configuration.SetOutputFolder(args.output)
 
     action: str = args.action
     input_arg: str = args.input
