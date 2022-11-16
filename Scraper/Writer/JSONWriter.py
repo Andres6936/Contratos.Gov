@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from typing import Tuple
 
 import requests
 from requests import Response
@@ -15,10 +14,8 @@ from Scraper.contract import ContractParser
 class JSONWriter(IWriter):
     __configuration = Configuration()
 
-    def __init__(self, contract: Tuple[str, str]):
-        (url, output_folder) = contract
+    def __init__(self, url: str):
         self.url: str = url
-        self.outputFolder: str = output_folder
 
     def GetOutputFolder(self) -> str:
         return self.__configuration.GetOutputFolder()

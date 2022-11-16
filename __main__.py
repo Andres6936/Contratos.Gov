@@ -49,7 +49,7 @@ if __name__ == "__main__":
     elif action == TypeActions.SCRAPER_CONTRACTS.value:
         GeneralMessage.publish(f"Reading link list from: {input_arg}")
         GeneralMessage.publish(f"Download contract html-content: {output_arg}")
-        contract_spider.main(input_arg, output_arg)
+        contract_spider.main()
 
     elif action == TypeActions.SERVER_CONTRACTS.value:
         GeneralMessage.publish("Start web server")
