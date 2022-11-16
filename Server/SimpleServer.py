@@ -1,7 +1,7 @@
 import http.server
 from http.server import BaseHTTPRequestHandler
 
-from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Logger.GeneralMessage import GeneralMessage
 
 hostName = "localhost"
 serverPort = 8080

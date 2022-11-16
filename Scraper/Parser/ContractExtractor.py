@@ -4,7 +4,7 @@ import requests
 from requests import Response
 
 from Scraper.Directory import Directory
-from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Logger.GeneralMessage import GeneralMessage
 
 
 class ContractExtractor:

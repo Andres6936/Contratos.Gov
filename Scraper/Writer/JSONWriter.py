@@ -6,7 +6,7 @@ import requests
 from requests import Response
 
 from Scraper.Directory import Directory
-from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Logger.GeneralMessage import GeneralMessage
 from Scraper.Writer.IWriter import IWriter
 from Scraper.contract import ContractParser
 

@@ -2,7 +2,7 @@ import argparse
 from enum import Enum, unique
 
 from Scraper import contract_spider, search_page, search_page_spider
-from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Logger.GeneralMessage import GeneralMessage
 from Server import SimpleServer
 
 

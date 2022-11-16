@@ -1,7 +1,7 @@
 import time
 from typing import Final
 
-from Scraper.ContractExtractor import ContractExtractor
+from Scraper.Parser.ContractExtractor import ContractExtractor
 
 
 class Extractor(list):

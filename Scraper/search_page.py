@@ -5,7 +5,7 @@ import multiprocessing
 import re
 from os import listdir
 
-from Scraper.GeneralMessage import GeneralMessage
+from Scraper.Logger.GeneralMessage import GeneralMessage
 
 
 def extract_links_from_index_page(content):
