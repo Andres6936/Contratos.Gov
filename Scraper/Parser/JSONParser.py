@@ -13,6 +13,9 @@ class JSONParser:
     def __init__(self, url: str):
         self.url: str = url
 
+    def name(self):
+        return self.url.split("=")[1].replace("/", "_") + ".json"
+
     def parser(self) -> Union[JSON, None]:
         try:
             result: Response = requests.get(self.url)

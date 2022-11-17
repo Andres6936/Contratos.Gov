@@ -16,7 +16,7 @@ def main():
 
     for url in urls:
         time.sleep(5)
-        writer: IWriter = JSONWriter(url, JSONParser(url))
+        writer: IWriter = JSONWriter(JSONParser(url))
         writer.write()
 
 # main(["data/all_links", "data/contracts/"])
