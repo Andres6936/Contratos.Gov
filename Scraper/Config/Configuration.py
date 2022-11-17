@@ -1,3 +1,6 @@
+from Scraper.Config.TypeConfig import TypeConfig
+
+
 class Configuration(dict):
     _instance = None
 
@@ -7,13 +10,13 @@ class Configuration(dict):
         return cls._instance
 
     def GetInputFolder(self) -> str:
-        return self._instance.inputFolder
+        return self._instance[TypeConfig.INPUT_FOLDER.value]
 
     def SetInputFolder(self, inputPath) -> None:
-        self._instance.inputFolder = inputPath
+        self._instance[TypeConfig.INPUT_FOLDER.value] = inputPath
 
     def GetOutputFolder(self) -> str:
-        return self._instance.outputFolder
+        return self._instance[TypeConfig.OUTPUT_FOLDER.value]
 
     def SetOutputFolder(self, outputPath) -> None:
-        self._instance.outputFolder = outputPath
+        self._instance[TypeConfig.OUTPUT_FOLDER.value] = outputPath
