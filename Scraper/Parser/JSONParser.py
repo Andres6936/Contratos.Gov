@@ -22,9 +22,8 @@ class JSONParser:
             if result.status_code == 200:
                 return ContractParser(result.text).parse()
             else:
-                GeneralMessage.publishError("error downloading.." + self.url)
+                GeneralMessage.publishError(f"Error Downloading HTML {self.url}, the status is {result.status_code}")
                 return None
         except Exception as e:
-            GeneralMessage.publishError(e)
-            GeneralMessage.publishError("error downloading.." + self.url)
+            GeneralMessage.publishError(f"An exception has occurred {e}, the url is {self.url}")
             return None

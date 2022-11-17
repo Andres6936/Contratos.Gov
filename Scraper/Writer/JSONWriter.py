@@ -18,10 +18,12 @@ class JSONWriter(IWriter):
         return self.__configuration.GetOutputFolder()
 
     def write(self) -> None:
-        folder: Path = self.GetOutputFolder() / Path(self.parser.name())
-        Directory.CreateFileIfNotExist(folder.parent)
-        GeneralMessage.publish("The name of file to write is: " + folder.as_posix())
-        with folder.open(mode='a+', encoding='utf-8') as f:
-            contract = self.parser.parser()
-            f.write(json.dumps(contract) + "\n")
-            f.close()
+        payload = self.parser.parser()
+        if payload is not None:
+            folder: Path = self.GetOutputFolder() / Path(self.parser.name())
+            Directory.CreateFileIfNotExist(folder.parent)
+            GeneralMessage.publish("The name of file to write is: " + folder.as_posix())
+            with folder.open(mode='a+', encoding='utf-8') as f:
+                contract = payload
+                f.write(json.dumps(contract) + "\n")
+                f.close()
