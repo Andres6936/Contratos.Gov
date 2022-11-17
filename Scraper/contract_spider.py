@@ -2,6 +2,7 @@ import codecs
 import time
 
 from Scraper.Config.Configuration import Configuration
+from Scraper.Parser.JSONParser import JSONParser
 from Scraper.Writer.IWriter import IWriter
 from Scraper.Writer.JSONWriter import JSONWriter
 
@@ -15,7 +16,7 @@ def main():
 
     for url in urls:
         time.sleep(5)
-        writer: IWriter = JSONWriter(url)
+        writer: IWriter = JSONWriter(url, JSONParser(url))
         writer.write()
 
 # main(["data/all_links", "data/contracts/"])
