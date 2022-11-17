@@ -9,7 +9,8 @@ from Scraper.Writer.JSONWriter import JSONWriter
 # Downloads a list of links to contract pages
 # main <pathToFileWithContractLinkPerLine> <FolderWhereContractLinksWillBeDownloaded>
 def main():
-    f = codecs.open(Configuration().GetInputFolder(), 'r', 'utf-8')
+    configuration = Configuration()
+    f = codecs.open(configuration.GetInputFolder(), 'r', 'utf-8')
     urls = (("https://www.contratos.gov.co" + line.strip()) for line in f)
 
     for url in urls:

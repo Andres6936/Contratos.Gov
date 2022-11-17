@@ -1,4 +1,4 @@
-class Configuration:
+class Configuration(dict):
     _instance = None
 
     def __new__(cls, *args, **kwargs):
@@ -6,18 +6,14 @@ class Configuration:
             cls._instance = super(Configuration, cls).__new__(cls)
         return cls._instance
 
-    def __init__(self):
-        self.inputFolder: str = ''
-        self.outputFolder: str = ''
-
     def GetInputFolder(self) -> str:
-        return self.inputFolder
+        return self._instance.inputFolder
 
     def SetInputFolder(self, inputPath) -> None:
-        self.inputFolder = inputPath
+        self._instance.inputFolder = inputPath
 
     def GetOutputFolder(self) -> str:
-        return self.outputFolder
+        return self._instance.outputFolder
 
     def SetOutputFolder(self, outputPath) -> None:
-        self.outputFolder = outputPath
+        self._instance.outputFolder = outputPath
