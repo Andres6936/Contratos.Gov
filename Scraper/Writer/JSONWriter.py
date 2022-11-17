@@ -4,15 +4,11 @@ from pathlib import Path
 from Scraper.Config.Configuration import Configuration
 from Scraper.Directory import Directory
 from Scraper.Logger.GeneralMessage import GeneralMessage
-from Scraper.Parser.JSONParser import JSONParser
 from Scraper.Writer.IWriter import IWriter
 
 
 class JSONWriter(IWriter):
     __configuration = Configuration()
-
-    def __init__(self, parser: JSONParser):
-        self.parser: JSONParser = parser
 
     def GetOutputFolder(self) -> str:
         return self.__configuration.GetOutputFolder()
