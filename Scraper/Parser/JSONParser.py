@@ -4,7 +4,7 @@ import requests
 from requests import Response
 
 from Scraper.Logger.GeneralMessage import GeneralMessage
-from Scraper.contract import ContractParser
+from Scraper.Parser.ContractParser import ContractParser
 
 JSON = dict[str, Union[list, str, int, float]]
 
