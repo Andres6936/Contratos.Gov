@@ -36,6 +36,5 @@ class ConnectionAdmin:
     def GetDatabasePort():
         return os.environ["MONGO_DATABASE_PORT"]
 
-    @staticmethod
-    def GetCollection(cls, collection):
-        return cls._client[collection]
+    def GetCollection(self, collection):
+        return self._client[collection]
