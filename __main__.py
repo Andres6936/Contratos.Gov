@@ -4,7 +4,7 @@ from enum import Enum, unique
 from Scraper import contract_spider, search_page, search_page_spider
 from Scraper.Config.Configuration import Configuration
 from Scraper.Logger.GeneralMessage import GeneralMessage
-from Server import SimpleServer
+from Server import Environment, SimpleServer
 
 
 # Scraper  scrape_searchpages --output folder
@@ -53,4 +53,5 @@ if __name__ == "__main__":
 
     elif action == TypeActions.SERVER_CONTRACTS.value:
         GeneralMessage.publish("Start web server")
+        Environment.main()
         SimpleServer.main()
