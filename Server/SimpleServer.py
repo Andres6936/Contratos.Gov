@@ -1,22 +1,31 @@
 import http.server
+import json
 from http.server import BaseHTTPRequestHandler
 
 from Scraper.Logger.GeneralMessage import GeneralMessage
+from Scraper.Parser.JSONParser import JSON
 
 hostName = "localhost"
 serverPort = 8080
 
 
+def auth(user: JSON):
+    pass
+
+
 class SimpleServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
-        self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
-        self.wfile.write(bytes("<body>", "utf-8"))
-        self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+    def do_POST(self):
+        if self.path == "/auth":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            contentLength = int(self.headers.get('Content-Length'))
+            self.wfile.write(self.rfile.read(contentLength))
+        else:
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"name": "admin"}).encode("utf-8"))
 
 
 def main():
