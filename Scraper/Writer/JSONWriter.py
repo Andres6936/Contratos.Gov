@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from Scraper.Config.Configuration import Configuration
-from Scraper.Directory import Directory
+from Scraper.IO.Directory import Directory
 from Scraper.Logger.GeneralMessage import GeneralMessage
 from Scraper.Writer.IWriter import IWriter
 

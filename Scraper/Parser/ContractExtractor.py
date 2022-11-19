@@ -3,7 +3,7 @@ from pathlib import Path
 import requests
 from requests import Response
 
-from Scraper.Directory import Directory
+from Scraper.IO.Directory import Directory
 from Scraper.Logger.GeneralMessage import GeneralMessage
 
 
