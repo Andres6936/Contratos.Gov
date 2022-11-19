@@ -3,15 +3,10 @@ import json
 from http.server import BaseHTTPRequestHandler
 
 from Scraper.Logger.GeneralMessage import GeneralMessage
-from Scraper.Parser.JSONParser import JSON
+from Server.User import auth, readAllUsers
 
 hostName = "localhost"
 serverPort = 8080
-
-
-def auth(user: JSON) -> JSON:
-    return user
-
 
 class SimpleServer(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -22,6 +17,11 @@ class SimpleServer(BaseHTTPRequestHandler):
             contentLength = int(self.headers.get('Content-Length'))
             response = auth(user=json.loads(self.rfile.read(contentLength)))
             self.wfile.write(json.dumps(response).encode("utf-8"))
+        elif self.path == "/users/all":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps(readAllUsers()).encode("utf-8"))
         else:
             self.send_response(200)
             self.send_header("Content-type", "application/json")
