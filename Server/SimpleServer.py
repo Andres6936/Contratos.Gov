@@ -9,8 +9,8 @@ hostName = "localhost"
 serverPort = 8080
 
 
-def auth(user: JSON):
-    pass
+def auth(user: JSON) -> JSON:
+    return user
 
 
 class SimpleServer(BaseHTTPRequestHandler):
@@ -20,7 +20,8 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.send_header("Content-type", "application/json")
             self.end_headers()
             contentLength = int(self.headers.get('Content-Length'))
-            self.wfile.write(self.rfile.read(contentLength))
+            response = auth(user=json.loads(self.rfile.read(contentLength)))
+            self.wfile.write(json.dumps(response).encode("utf-8"))
         else:
             self.send_response(200)
             self.send_header("Content-type", "application/json")
