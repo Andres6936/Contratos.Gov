@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {Component, inject, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
+import {AppService} from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,15 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'App';
+export class AppComponent implements OnInit  {
+  private readonly appService = inject(AppService);
+  public readonly  title = 'App';
+
+  ngOnInit(): void {
+    this.appService.getContracts().subscribe({
+      next:( result) => {
+        console.log(result)
+      }
+    })
+  }
 }
