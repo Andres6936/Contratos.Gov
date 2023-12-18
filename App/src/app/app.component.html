@@ -54,7 +54,7 @@
         <p>{{ contract.DateStartContract }} /{{ contract.DateEndContract }}</p>
         <p>{{ contract.DateStartExecution }} / {{ contract.DateEndExecution }}</p>
       </div>
-      
+
       <div>
         <p>{{ contract.DeliveryConditions }}</p>
         <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
@@ -62,7 +62,7 @@
       </div>
 
       <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.IsGroup }} / {{ contract.IsPyme }}</p>
+        <p>{{ contract.IsGroup }} / {{ contract.IsPyme }} / {{ contract.IsPostConflict }}</p>
         <p>{{ contract.EnableAdvancePayment }} / {{ contract.Liquidation }}</p>
       </div>
 
@@ -78,6 +78,48 @@
 
       <div class="flex flex:row justify-content:space-between">
         <p>{{ contract.ValuePendingAmortized }} / {{ contract.ValuePendingExecution }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.StateBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.CodeBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.YearBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.BalanceCertificateOfBudgetaryAvailability }}</p>
+        <p>{{ contract.BalanceVigence }}</p>
+        <p>{{ contract.ExpenseDestination }}</p>
+        <p>{{ contract.OrigenResources }}</p>
+        <p>{{ contract.DaysAdded }}</p>
+        <p>{{ contract.PointsOfTheAgreement }}</p>
+        <p>{{ contract.PillarsOfTheAgreement }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.LegalRepresentativeName }}</p>
+        <p>{{ contract.LegalRepresentativeNationality }}</p>
+        <p>{{ contract.LegalRepresentativeTypeIdentification }}</p>
+        <p>{{ contract.LegalRepresentativeGender }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.GeneralBudgetOfNation }}</p>
+        <p>{{ contract.GeneralParticipationSystem }}</p>
+        <p>{{ contract.GeneralRoyaltiesSystem }}</p>
+        <p>{{ contract.ResourcesOfAnotherEntities }}</p>
+        <p>{{ contract.CreditResources }}</p>
+        <p>{{ contract.OwnResources }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.LastUpdate }}</p>
+        <p>{{ contract.DateStartLiquidation }}</p>
+        <p>{{ contract.DateEndLiquidation }}</p>
+        <p>{{ contract.CodeProvider }}</p>
+        <p>{{ contract.ObjectContract }}</p>
+      </div>
+
+      <div class="my:1rem">
+        <a class="bg:sky-60 color:white font:bold px:1rem py:0.5rem r:0.3rem" [href]="contract.ProcessUrl">Process
+          URL</a>
       </div>
     </div>
   }
