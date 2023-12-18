@@ -9,11 +9,11 @@ import {Observable} from "rxjs";
 export class AppService {
   private readonly httpService = inject(HttpClient)
 
-  public getContracts(): Observable<Contract[]> {
+  public getContracts(pageCount:number, pageSize: number): Observable<Contract[]> {
     return this.httpService.get<Contract[]>('http://127.0.0.1:8000/contracts', {
       params: {
-        skip: 0,
-        limit: 10,
+        skip: pageCount,
+        limit: pageSize,
       }
     })
   }

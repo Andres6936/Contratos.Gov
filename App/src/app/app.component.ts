@@ -10,14 +10,17 @@ import type {Contract} from "./app.types";
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit  {
+export class AppComponent implements OnInit {
   private readonly appService = inject(AppService);
-  public readonly  title = 'App';
+  public readonly title = 'App';
+
+  private pageCount = 0;
+  private pageSize = 10;
   public contracts: Contract[] = []
 
   ngOnInit(): void {
-    this.appService.getContracts().subscribe({
-      next:( result ) => {
+    this.appService.getContracts(this.pageCount, this.pageSize).subscribe({
+      next: (result) => {
         this.contracts = result as Contract[]
       }
     })
