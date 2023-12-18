@@ -1,10 +1,18 @@
 <main class="p:1rem flex flex:col gap:1rem">
   @for (contract of contracts; track contract) {
     <div class="border:1px|solid|#CCC p:1rem r:1rem">
-      <p class=font:bold>{{ contract.Serial }}</p>
+      <div class="flex flex:row justify-content:space-between">
+        <p class=font:bold>{{ contract.Serial }}</p>
+        <p>{{ contract.CodeCategoryMain }}</p>
+      </div>
+
       <div class="flex flex:row justify-content:space-between">
         <p>{{ contract.NameEntity }}</p>
         <p>{{ contract.NitEntity }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.CentralEntity }}</p>
       </div>
 
       <div class="flex flex:row justify-content:space-between">
@@ -12,9 +20,64 @@
         <p>{{ contract.Location }}</p>
       </div>
 
-       <div class="flex flex:row justify-content:space-between">
+      <div class="flex flex:row justify-content:space-between">
         <p>{{ contract.Order }} / {{ contract.Sector }}</p>
         <p>{{ contract.Branch }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.ProcessPurchase }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.SerialContract }}</p>
+        <p>{{ contract.ReferenceContract }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.StateContract }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.DescriptionProcess }}</p>
+      </div>
+
+      <div>
+        <p>{{ contract.TypeContract }}</p>
+        <p>{{ contract.ContractingMode }}</p>
+        <p>{{ contract.JustifyContractingMode }}</p>
+        <p>{{ contract.DateSign }}</p>
+        <p>{{ contract.Reversal }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.DateStartContract }} /{{ contract.DateEndContract }}</p>
+        <p>{{ contract.DateStartExecution }} / {{ contract.DateEndExecution }}</p>
+      </div>
+      
+      <div>
+        <p>{{ contract.DeliveryConditions }}</p>
+        <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
+        <p>{{ contract.ProviderAwarder }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.IsGroup }} / {{ contract.IsPyme }}</p>
+        <p>{{ contract.EnableAdvancePayment }} / {{ contract.Liquidation }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.EnvironmentalObligation }} / {{ contract.PostConsumerObligation }}</p>
+        <p>{{ contract.ValueContract }} / {{ contract.ValueEnableAdvancePayment }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.ValueInvoice }} / {{ contract.ValuePendingPayment }}</p>
+        <p>{{ contract.ValuePaid }} / {{ contract.ValueAmortized }}</p>
+      </div>
+
+      <div class="flex flex:row justify-content:space-between">
+        <p>{{ contract.ValuePendingAmortized }} / {{ contract.ValuePendingExecution }}</p>
       </div>
     </div>
   }
