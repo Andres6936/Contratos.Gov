@@ -1,21 +1,28 @@
-import {inject, Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
-import {Contract} from "./app.types";
-import {Observable} from "rxjs";
+import {Injectable} from "@angular/core";
+import {createTRPCClient, httpBatchLink} from '@trpc/client';
+import {AppRouter} from "xserver";
+import * as url from "url";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  private readonly httpService = inject(HttpClient)
+  private readonly trcp;
 
-  public getContracts(pageCount:number, pageSize: number): Observable<Contract[]> {
-    return this.httpService.get<Contract[]>('http://127.0.0.1:8000/contracts', {
-      params: {
-        skip: pageCount,
-        limit: pageSize,
-      }
-    })
+  constructor() {
+    this.trcp = createTRPCClient<AppRouter>({
+      links: [
+        httpBatchLink({
+          url: 'http://127.0.0.1:8000',
+        })
+      ]
+    });
+  }
+
+
+  public async getContracts(pageCount:number, pageSize: number) {
+    return await this.trcp.contractList.query();
   }
 }
 

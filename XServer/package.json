@@ -2,15 +2,22 @@
   "name": "xserver",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "run": "bun --hot run index.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest",
+    "@types/cors": "^2.8.17",
     "drizzle-kit": "^0.20.14"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@trpc/client": "next",
+    "@trpc/server": "next",
     "better-sqlite3": "^9.4.3",
+    "cors": "^2.8.5",
     "drizzle-orm": "^0.29.4"
   }
 }

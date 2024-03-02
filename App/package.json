@@ -20,8 +20,10 @@
     "@angular/router": "^17.0.0",
     "@master/css": "^1.37.8",
     "@master/normal.css": "^2.0.0-beta.84",
+    "@trpc/client": "^11.0.0-next-beta.303",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xserver": "file:../XServer",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {

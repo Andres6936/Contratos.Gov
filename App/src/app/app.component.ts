@@ -20,10 +20,8 @@ export class AppComponent implements OnInit {
   public contracts: Contract[] = []
 
   ngOnInit(): void {
-    this.appService.getContracts(this.pageCount, this.pageSize).subscribe({
-      next: (result) => {
-        this.contracts = result as Contract[]
-      }
+    this.appService.getContracts(this.pageCount, this.pageSize).then((items) => {
+      this.contracts = items as Contract[]
     })
   }
 }
