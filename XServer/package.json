@@ -17,6 +17,7 @@
     "@trpc/server": "next",
     "better-sqlite3": "^9.4.3",
     "cors": "^2.8.5",
-    "drizzle-orm": "^0.29.4"
+    "drizzle-orm": "^0.29.4",
+    "zod": "^3.22.4"
   }
 }

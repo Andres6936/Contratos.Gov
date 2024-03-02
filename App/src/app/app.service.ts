@@ -22,7 +22,10 @@ export class AppService {
 
 
   public async getContracts(pageCount:number, pageSize: number) {
-    return await this.trcp.contractList.query();
+    return await this.trcp.contractList.query({
+      PageSize: pageSize,
+      PageCount: pageCount,
+    });
   }
 }
 
