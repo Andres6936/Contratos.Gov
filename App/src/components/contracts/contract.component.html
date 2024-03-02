@@ -6,26 +6,32 @@
   <app-entity-contract [contract]="contract"/>
   <app-location-contract [contract]="contract"/>
 
-  <div class="my:1rem flex flex:col">
-    <h3>Process Purchase</h3>
-    <div class="px:1rem pt:0.5rem">
+  <div class="flex flex:col my:1rem border:1px|solid|#CCC r:0.5rem p:1rem">
+    <h3 class="mb:1rem">Information State of Contract</h3>
+
+    <div class="flex flex:row justify-content:space-between">
+      <p>State Contract:</p>
+      <p class="text:end">{{ contract.StateContract }}</p>
+    </div>
+
+    <div class="flex flex:row justify-content:space-between">
+      <p>Code Category Main:</p>
+      <p class="text:end">{{ contract.CodeCategoryMain }}</p>
+    </div>
+
+    <div class="flex flex:row justify-content:space-between">
+      <p>Process Purchase:</p>
       <p>{{ contract.ProcessPurchase }}</p>
+    </div>
+
+    <div class="flex flex:row justify-content:space-between">
+      <p>Serial Contract:</p>
       <p>{{ contract.SerialContract }}</p>
+    </div>
+
+    <div class="flex flex:row justify-content:space-between">
+      <p>Reference Contract:</p>
       <p>{{ contract.ReferenceContract }}</p>
-    </div>
-  </div>
-
-  <div class="my:1rem flex flex:col">
-    <h3>Code Category Main</h3>
-    <div class="px:1rem pt:0.5rem">
-      <p>{{ contract.CodeCategoryMain }}</p>
-    </div>
-  </div>
-
-  <div class="my:1rem flex flex:col">
-    <h3>State Contract</h3>
-    <div class="px:1rem pt:0.5rem">
-      <p>{{ contract.StateContract }}</p>
     </div>
   </div>
 
