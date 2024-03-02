@@ -7,20 +7,7 @@
       </div>
 
       <app-entity-contract [contract]="contract"/>
-
-      <div>
-        <p>{{ contract.CodeProvider }}</p>
-      </div>
-
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.Department }} / {{ contract.City }}</p>
-        <p>{{ contract.Location }}</p>
-      </div>
-
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.Order }} / {{ contract.Sector }}</p>
-        <p>{{ contract.Branch }}</p>
-      </div>
+      <app-location-contract [contract]="contract"/>
 
       <div class="my:1rem flex flex:col">
         <h3>Process Purchase</h3>
@@ -28,6 +15,13 @@
           <p>{{ contract.ProcessPurchase }}</p>
           <p>{{ contract.SerialContract }}</p>
           <p>{{ contract.ReferenceContract }}</p>
+        </div>
+      </div>
+
+        <div class="my:1rem flex flex:col">
+        <h3>Code Provider</h3>
+        <div class="px:1rem pt:0.5rem">
+          <p>{{ contract.CodeProvider }}</p>
         </div>
       </div>
 

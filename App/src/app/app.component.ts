@@ -9,11 +9,12 @@ import {DatesContractComponent} from "../components/dates-contract.component";
 import {ExternalResourcesContractComponent} from "../components/external-resources-contract.component";
 import {LegalRepresentativeContractComponent} from "../components/legal-representative-contract.component";
 import {EntityContractComponent} from "../components/entity-contract.component";
+import {LocationContractComponent} from "../components/location-contract.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ValueContractComponent, TypeContractComponent, DatesContractComponent, ExternalResourcesContractComponent, LegalRepresentativeContractComponent, EntityContractComponent],
+  imports: [CommonModule, RouterOutlet, ValueContractComponent, TypeContractComponent, DatesContractComponent, ExternalResourcesContractComponent, LegalRepresentativeContractComponent, EntityContractComponent, LocationContractComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
