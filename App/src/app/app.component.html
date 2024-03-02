@@ -92,14 +92,8 @@
         <p>{{ contract.PointsOfTheAgreement }}</p>
         <p>{{ contract.PillarsOfTheAgreement }}</p>
       </div>
-
-      <div>
-        <p>{{ contract.LegalRepresentativeName }}</p>
-        <p>{{ contract.LegalRepresentativeNationality }}</p>
-        <p>{{ contract.LegalRepresentativeTypeIdentification }}</p>
-        <p>{{ contract.LegalRepresentativeGender }}</p>
-      </div>
-
+      
+      <app-legal-representative-contract [contract]="contract"/>
       <app-external-resources-contract [contract]="contract"/>
 
       <div>
