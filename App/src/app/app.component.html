@@ -6,14 +6,7 @@
         <p>{{ contract.CodeCategoryMain }}</p>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.NameEntity }}</p>
-        <p>{{ contract.NitEntity }}</p>
-      </div>
-
-      <div>
-        <p>{{ contract.CentralEntity }}</p>
-      </div>
+      <app-entity-contract [contract]="contract"/>
 
       <div>
         <p>{{ contract.CodeProvider }}</p>
