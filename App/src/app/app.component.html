@@ -38,10 +38,22 @@
         </div>
       </div>
 
+      <div>
+        <p>{{ contract.StateBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.CodeBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.YearBankOfNationalInvestmentProjects }}</p>
+        <p>{{ contract.BalanceCertificateOfBudgetaryAvailability }}</p>
+        <p>{{ contract.BalanceVigence }}</p>
+        <p>{{ contract.ExpenseDestination }}</p>
+        <p>{{ contract.OrigenResources }}</p>
+        <p>{{ contract.DaysAdded }}</p>
+        <p>{{ contract.PointsOfTheAgreement }}</p>
+        <p>{{ contract.PillarsOfTheAgreement }}</p>
+      </div>
+
       <div class="my:1rem">
         <h3 class="font:bold mb:0.5rem">Description Process</h3>
         <div class="bg:gray-90 border:1px|solid|#CCC r:0.5rem px:1rem py:0.5rem">
-
           <p>{{ contract.DescriptionProcess }}</p>
         </div>
       </div>
@@ -49,7 +61,6 @@
       <div class="my:1rem">
         <h3 class="font:bold mb:0.5rem">Object Contract</h3>
         <div class="bg:gray-90 border:1px|solid|#CCC r:0.5rem px:1rem py:0.5rem">
-
           <p>{{ contract.ObjectContract }}</p>
         </div>
       </div>
@@ -73,20 +84,6 @@
 
       <app-type-contract [contract]="contract"/>
       <app-value-contract [contract]="contract"/>
-
-      <div>
-        <p>{{ contract.StateBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.CodeBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.YearBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.BalanceCertificateOfBudgetaryAvailability }}</p>
-        <p>{{ contract.BalanceVigence }}</p>
-        <p>{{ contract.ExpenseDestination }}</p>
-        <p>{{ contract.OrigenResources }}</p>
-        <p>{{ contract.DaysAdded }}</p>
-        <p>{{ contract.PointsOfTheAgreement }}</p>
-        <p>{{ contract.PillarsOfTheAgreement }}</p>
-      </div>
-
       <app-legal-representative-contract [contract]="contract"/>
       <app-external-resources-contract [contract]="contract"/>
 
