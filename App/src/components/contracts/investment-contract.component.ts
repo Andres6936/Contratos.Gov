@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import type {Contract} from "../app/app.types";
+import type {Contract} from "../../app/app.types";
 
 
 @Component({

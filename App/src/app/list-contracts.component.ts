@@ -1,12 +1,12 @@
 import {Component, inject, OnInit} from "@angular/core";
-import {DatesContractComponent} from "../components/dates-contract.component";
-import {EntityContractComponent} from "../components/entity-contract.component";
-import {ExternalResourcesContractComponent} from "../components/external-resources-contract.component";
-import {InvestmentContractComponent} from "../components/investment-contract.component";
-import {LegalRepresentativeContractComponent} from "../components/legal-representative-contract.component";
-import {LocationContractComponent} from "../components/location-contract.component";
-import {TypeContractComponent} from "../components/type-contract.component";
-import {ValueContractComponent} from "../components/value-contract.component";
+import {DatesContractComponent} from "../components/contracts/dates-contract.component";
+import {EntityContractComponent} from "../components/contracts/entity-contract.component";
+import {ExternalResourcesContractComponent} from "../components/contracts/external-resources-contract.component";
+import {InvestmentContractComponent} from "../components/contracts/investment-contract.component";
+import {LegalRepresentativeContractComponent} from "../components/contracts/legal-representative-contract.component";
+import {LocationContractComponent} from "../components/contracts/location-contract.component";
+import {TypeContractComponent} from "../components/contracts/type-contract.component";
+import {ValueContractComponent} from "../components/contracts/value-contract.component";
 import type {Contract} from "./app.types";
 import {AppService} from "./app.service";
 
