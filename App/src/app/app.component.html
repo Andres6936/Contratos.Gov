@@ -62,19 +62,7 @@
         <p>{{ contract.Reversal }}</p>
       </div>
 
-      <div class="my:1rem flex flex:col">
-        <h3 class="font:bold mb:0.5rem">Date Start Contract</h3>
-        <div class="flex flex:row justify-content:space-between">
-          <p>{{ contract.DateStartContract }} / {{ contract.DateEndContract }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3 class="font:bold mb:0.5rem">Date Start Execution</h3>
-        <div class="flex flex:row justify-content:space-between">
-          <p>{{ contract.DateStartExecution }} / {{ contract.DateEndExecution }}</p>
-        </div>
-      </div>
+      <app-dates-contract [contract]="contract" />
 
       <div class="my:1rem flex flex:col">
         <h3>Delivery Conditions</h3>
@@ -122,9 +110,6 @@
       </div>
 
       <div>
-        <p>{{ contract.LastUpdate }}</p>
-        <p>{{ contract.DateStartLiquidation }}</p>
-        <p>{{ contract.DateEndLiquidation }}</p>
         <p>{{ contract.CodeProvider }}</p>
       </div>
 
