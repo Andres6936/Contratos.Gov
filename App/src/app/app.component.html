@@ -38,18 +38,7 @@
         </div>
       </div>
 
-      <div>
-        <p>{{ contract.StateBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.CodeBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.YearBankOfNationalInvestmentProjects }}</p>
-        <p>{{ contract.BalanceCertificateOfBudgetaryAvailability }}</p>
-        <p>{{ contract.BalanceVigence }}</p>
-        <p>{{ contract.ExpenseDestination }}</p>
-        <p>{{ contract.OrigenResources }}</p>
-        <p>{{ contract.DaysAdded }}</p>
-        <p>{{ contract.PointsOfTheAgreement }}</p>
-        <p>{{ contract.PillarsOfTheAgreement }}</p>
-      </div>
+      <app-investment-contract [contract]="contract"/>
 
       <div class="my:1rem">
         <h3 class="font:bold mb:0.5rem">Description Process</h3>
