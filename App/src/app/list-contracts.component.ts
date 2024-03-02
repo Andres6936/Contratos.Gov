@@ -2,8 +2,8 @@ import {Component, inject, OnInit} from "@angular/core";
 import type {Contract} from "./app.types";
 import {AppService} from "./app.service";
 import {ContractComponent} from "../components/contracts/contract.component";
+import {PaginationComponent} from "../components/general/pagination.component";
 import {ArrowLeftIcon} from "../components/icons/arrow-left.icon";
-import {ArrowRightIcon} from "../components/icons/arrow-right.icon";
 
 @Component({
   selector: 'app-list-contracts',
@@ -11,8 +11,8 @@ import {ArrowRightIcon} from "../components/icons/arrow-right.icon";
   standalone: true,
   imports: [
     ContractComponent,
-    ArrowLeftIcon,
-    ArrowRightIcon
+    PaginationComponent,
+    ArrowLeftIcon
   ]
 })
 export class ListContractsComponent implements OnInit {
