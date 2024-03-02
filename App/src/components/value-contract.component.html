@@ -1,33 +1,35 @@
-<div class="flex flex:col my:1rem">
-  <h3>Value of Contract</h3>
+<div class="flex flex:col my:1rem border:1px|solid|#CCC r:0.5rem p:1rem">
+  <h3 class="mb:1rem">Value of Contract</h3>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Invoice:</p>
-    <p>{{ contract.ValueInvoice }}</p>
+    <p>{{ contract.ValueInvoice | currency: 'COP' : '' : '1.0' }}</p>
   </div>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Pending Payment:</p>
-    <p>{{ contract.ValuePendingPayment }}</p>
+    <p>{{ contract.ValuePendingPayment |currency: 'COP' : '' : '1.0' }}</p>
   </div>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Paid:</p>
-    <p>{{ contract.ValuePaid }}</p>
+    <p>{{ contract.ValuePaid | currency: 'COP' : '' : '1.0' }}</p>
   </div>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Amortized:</p>
-    <p>{{ contract.ValueAmortized }}</p>
+    <p>{{ contract.ValueAmortized | currency: 'COP' : '' : '1.0' }}</p>
   </div>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Pending Amortized:</p>
-    <p>{{ contract.ValuePendingAmortized }}</p>
+    <p>{{ contract.ValuePendingAmortized | currency: 'COP' : '' : '1.0' }}</p>
   </div>
 
   <div class="flex flex:row justify-content:space-between">
     <p>Value Pending Execution:</p>
-    <p>{{ contract.ValuePendingExecution }}</p>
+    <p>{{ contract.ValuePendingExecution | currency: 'COP' : '' : '1.0' }}</p>
   </div>
+
+  <p class="text:end font:gray-70 mt:1rem">All values are expressed in COP</p>
 </div>
