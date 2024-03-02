@@ -99,47 +99,7 @@
         <p>{{ contract.ValueContract }} / {{ contract.ValueEnableAdvancePayment }}</p>
       </div>
 
-      <div class="my:1rem flex flex:col">
-        <h3>Value Invoice</h3>
-        <div>
-          <p>{{ contract.ValueInvoice }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3>Value Pending Payment</h3>
-        <div>
-          <p>{{ contract.ValuePendingPayment }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3>Value Paid</h3>
-        <div>
-          <p>{{ contract.ValuePaid }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3>Value Amortized</h3>
-        <div>
-          <p>{{ contract.ValueAmortized }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3>Value Pending Amortized</h3>
-        <div>
-          <p>{{ contract.ValuePendingAmortized }}</p>
-        </div>
-      </div>
-
-      <div class="my:1rem flex flex:col">
-        <h3>Value Pending Execution</h3>
-        <div>
-          <p>{{ contract.ValuePendingExecution }}</p>
-        </div>
-      </div>
+      <app-value-contract [contract]="contract"/>
 
       <div>
         <p>{{ contract.StateBankOfNationalInvestmentProjects }}</p>
