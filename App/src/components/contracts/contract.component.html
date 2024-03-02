@@ -23,13 +23,6 @@
   </div>
 
   <div class="my:1rem flex flex:col">
-    <h3>Code Provider</h3>
-    <div class="px:1rem pt:0.5rem">
-      <p>{{ contract.CodeProvider }}</p>
-    </div>
-  </div>
-
-  <div class="my:1rem flex flex:col">
     <h3>State Contract</h3>
     <div class="px:1rem pt:0.5rem">
       <p>{{ contract.StateContract }}</p>
@@ -53,15 +46,7 @@
   </div>
 
   <app-dates-contract [contract]="contract"/>
-
-  <div class="my:1rem flex flex:col">
-    <h3>Information of Provider</h3>
-    <div class="px:1rem pt:0.5rem">
-      <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
-      <p>{{ contract.ProviderAwarder }}</p>
-    </div>
-  </div>
-
+  <app-provider-contract [contract]="contract"/>
   <app-type-contract [contract]="contract"/>
   <app-value-contract [contract]="contract"/>
   <app-legal-representative-contract [contract]="contract"/>

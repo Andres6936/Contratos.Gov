@@ -8,6 +8,7 @@ import {TypeContractComponent} from "./widgets/type-contract.component";
 import {ValueContractComponent} from "./widgets/value-contract.component";
 import {LegalRepresentativeContractComponent} from "./widgets/legal-representative-contract.component";
 import {ExternalResourcesContractComponent} from "./widgets/external-resources-contract.component";
+import {ProviderContractComponent} from "./widgets/provider-contract.component";
 
 @Component({
   selector: 'app-contract',
@@ -21,7 +22,8 @@ import {ExternalResourcesContractComponent} from "./widgets/external-resources-c
     TypeContractComponent,
     ValueContractComponent,
     LegalRepresentativeContractComponent,
-    ExternalResourcesContractComponent
+    ExternalResourcesContractComponent,
+    ProviderContractComponent
   ]
 })
 export class ContractComponent {
