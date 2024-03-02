@@ -15,6 +15,10 @@
         <p>{{ contract.CentralEntity }}</p>
       </div>
 
+      <div>
+        <p>{{ contract.CodeProvider }}</p>
+      </div>
+
       <div class="flex flex:row justify-content:space-between">
         <p>{{ contract.Department }} / {{ contract.City }}</p>
         <p>{{ contract.Location }}</p>
@@ -25,17 +29,20 @@
         <p>{{ contract.Branch }}</p>
       </div>
 
-      <div>
-        <p>{{ contract.ProcessPurchase }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3>Process Purchase</h3>
+        <div class="px:1rem pt:0.5rem">
+          <p>{{ contract.ProcessPurchase }}</p>
+          <p>{{ contract.SerialContract }}</p>
+          <p>{{ contract.ReferenceContract }}</p>
+        </div>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.SerialContract }}</p>
-        <p>{{ contract.ReferenceContract }}</p>
-      </div>
-
-      <div>
-        <p>{{ contract.StateContract }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3>State Contract</h3>
+        <div class="px:1rem pt:0.5rem">
+          <p>{{ contract.StateContract }}</p>
+        </div>
       </div>
 
       <div class="my:1rem">
@@ -54,19 +61,21 @@
         </div>
       </div>
 
-      <app-dates-contract [contract]="contract" />
+      <app-dates-contract [contract]="contract"/>
 
       <div class="my:1rem flex flex:col">
         <h3>Delivery Conditions</h3>
-        <div>
+        <div class="px:1rem pt:0.5rem">
           <p>{{ contract.DeliveryConditions }}</p>
         </div>
       </div>
 
       <div class="my:1rem flex flex:col">
         <h3>Information of Provider</h3>
-        <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
-        <p>{{ contract.ProviderAwarder }}</p>
+        <div class="px:1rem pt:0.5rem">
+          <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
+          <p>{{ contract.ProviderAwarder }}</p>
+        </div>
       </div>
 
       <app-type-contract [contract]="contract"/>
@@ -87,10 +96,6 @@
 
       <app-legal-representative-contract [contract]="contract"/>
       <app-external-resources-contract [contract]="contract"/>
-
-      <div>
-        <p>{{ contract.CodeProvider }}</p>
-      </div>
 
       <div class="my:1rem">
         <a class="bg:sky-60 color:white font:bold px:1rem py:0.5rem r:0.3rem" [href]="contract.ProcessUrl">Process
