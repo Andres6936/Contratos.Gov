@@ -62,13 +62,29 @@
         <p>{{ contract.Reversal }}</p>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.DateStartContract }} /{{ contract.DateEndContract }}</p>
-        <p>{{ contract.DateStartExecution }} / {{ contract.DateEndExecution }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3 class="font:bold mb:0.5rem">Date Start Contract</h3>
+        <div class="flex flex:row justify-content:space-between">
+          <p>{{ contract.DateStartContract }} / {{ contract.DateEndContract }}</p>
+        </div>
       </div>
 
-      <div>
-        <p>{{ contract.DeliveryConditions }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3 class="font:bold mb:0.5rem">Date Start Execution</h3>
+        <div class="flex flex:row justify-content:space-between">
+          <p>{{ contract.DateStartExecution }} / {{ contract.DateEndExecution }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Delivery Conditions</h3>
+        <div>
+          <p>{{ contract.DeliveryConditions }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Information of Provider</h3>
         <p>{{ contract.ProviderTypeDocument }} : {{ contract.ProviderDocument }}</p>
         <p>{{ contract.ProviderAwarder }}</p>
       </div>
@@ -83,13 +99,46 @@
         <p>{{ contract.ValueContract }} / {{ contract.ValueEnableAdvancePayment }}</p>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.ValueInvoice }} / {{ contract.ValuePendingPayment }}</p>
-        <p>{{ contract.ValuePaid }} / {{ contract.ValueAmortized }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3>Value Invoice</h3>
+        <div>
+          <p>{{ contract.ValueInvoice }}</p>
+        </div>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.ValuePendingAmortized }} / {{ contract.ValuePendingExecution }}</p>
+      <div class="my:1rem flex flex:col">
+        <h3>Value Pending Payment</h3>
+        <div>
+          <p>{{ contract.ValuePendingPayment }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Value Paid</h3>
+        <div>
+          <p>{{ contract.ValuePaid }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Value Amortized</h3>
+        <div>
+          <p>{{ contract.ValueAmortized }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Value Pending Amortized</h3>
+        <div>
+          <p>{{ contract.ValuePendingAmortized }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
+        <h3>Value Pending Execution</h3>
+        <div>
+          <p>{{ contract.ValuePendingExecution }}</p>
+        </div>
       </div>
 
       <div>
