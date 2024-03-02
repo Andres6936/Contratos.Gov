@@ -1,0 +1,35 @@
+<div class="flex flex:col my:1rem border:1px|solid|#CCC r:0.5rem p:1rem">
+  <h3 class="mb:1rem">External Resource of Contract</h3>
+
+    <div class="flex flex:row justify-content:space-between">
+    <p>General Budget of Nation:</p>
+    <p>{{ contract.GeneralBudgetOfNation | currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+        <div class="flex flex:row justify-content:space-between">
+    <p>General Participation System:</p>
+    <p>{{ contract.GeneralParticipationSystem | currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+  <div class="flex flex:row justify-content:space-between">
+    <p>General Royalties System:</p>
+    <p>{{ contract.GeneralRoyaltiesSystem | currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+  <div class="flex flex:row justify-content:space-between">
+    <p>Resources of Another Entities:</p>
+    <p>{{ contract.ResourcesOfAnotherEntities |currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+  <div class="flex flex:row justify-content:space-between">
+    <p>Credit Resources:</p>
+    <p>{{ contract.CreditResources | currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+  <div class="flex flex:row justify-content:space-between">
+    <p>Own Resources:</p>
+    <p>{{ contract.OwnResources | currency: 'COP' : '' : '1.0' }}</p>
+  </div>
+
+  <p class="text:end font:gray-70 mt:1rem">All values are expressed in COP</p>
+</div>

@@ -1,4 +1,4 @@
-<main class="font:sans p:1rem flex flex:col gap:1rem">
+<main class="font:sans p:0.5rem flex flex:col gap:1rem">
   @for (contract of contracts; track contract) {
     <div class="border:1px|solid|#CCC p:1rem r:1rem">
       <div class="flex flex:row justify-content:space-between">
@@ -100,14 +100,7 @@
         <p>{{ contract.LegalRepresentativeGender }}</p>
       </div>
 
-      <div>
-        <p>{{ contract.GeneralBudgetOfNation }}</p>
-        <p>{{ contract.GeneralParticipationSystem }}</p>
-        <p>{{ contract.GeneralRoyaltiesSystem }}</p>
-        <p>{{ contract.ResourcesOfAnotherEntities }}</p>
-        <p>{{ contract.CreditResources }}</p>
-        <p>{{ contract.OwnResources }}</p>
-      </div>
+      <app-external-resources-contract [contract]="contract"/>
 
       <div>
         <p>{{ contract.CodeProvider }}</p>
