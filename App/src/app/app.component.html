@@ -1,9 +1,8 @@
 <main class="font:sans p:0.5rem flex flex:col gap:1rem">
   @for (contract of contracts; track contract) {
     <div class="border:1px|solid|#CCC p:1rem r:1rem">
-      <div class="flex flex:row justify-content:space-between">
+      <div class="flex flex:col">
         <p class=font:bold>{{ contract.Serial }}</p>
-        <p>{{ contract.CodeCategoryMain }}</p>
       </div>
 
       <app-entity-contract [contract]="contract"/>
@@ -18,7 +17,14 @@
         </div>
       </div>
 
-        <div class="my:1rem flex flex:col">
+      <div class="my:1rem flex flex:col">
+        <h3>Code Category Main</h3>
+        <div class="px:1rem pt:0.5rem">
+          <p>{{ contract.CodeCategoryMain }}</p>
+        </div>
+      </div>
+
+      <div class="my:1rem flex flex:col">
         <h3>Code Provider</h3>
         <div class="px:1rem pt:0.5rem">
           <p>{{ contract.CodeProvider }}</p>
