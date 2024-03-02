@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.appService.getContracts(this.pageCount, this.pageSize).then((items) => {
       this.contracts = items as Contract[]
+    }).catch(error => {
+      console.error(error)
     })
   }
 }

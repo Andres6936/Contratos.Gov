@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {createTRPCClient, httpBatchLink} from '@trpc/client';
 import {AppRouter} from "xserver";
-import * as url from "url";
 
 
 @Injectable({
