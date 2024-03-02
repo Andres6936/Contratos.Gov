@@ -89,15 +89,7 @@
         <p>{{ contract.ProviderAwarder }}</p>
       </div>
 
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.IsGroup }} / {{ contract.IsPyme }} / {{ contract.IsPostConflict }}</p>
-        <p>{{ contract.EnableAdvancePayment }} / {{ contract.Liquidation }}</p>
-      </div>
-
-      <div class="flex flex:row justify-content:space-between">
-        <p>{{ contract.EnvironmentalObligation }} / {{ contract.PostConsumerObligation }}</p>
-      </div>
-
+      <app-type-contract [contract]="contract"/>
       <app-value-contract [contract]="contract"/>
 
       <div>
